@@ -14,6 +14,8 @@ import { UniverSheetsPlugin } from "@univerjs/sheets";
 import { UniverSheetsFormulaPlugin } from "@univerjs/sheets-formula";
 import { UniverSheetsUIPlugin } from "@univerjs/sheets-ui";
 import { UniverUIPlugin } from "@univerjs/ui";
+import { luckyJson } from "./data/demo-feature";
+import { luckyToUniver } from "./core/lucky-to-univer";
 
 const univer = new Univer({
   theme: defaultTheme,
@@ -38,4 +40,5 @@ univer.registerPlugin(UniverSheetsUIPlugin);
 univer.registerPlugin(UniverSheetsFormulaPlugin);
 
 // create univer sheet instance
-univer.createUniverSheet({});
+const univerData = luckyToUniver(luckyJson);
+univer.createUniverSheet(univerData);
