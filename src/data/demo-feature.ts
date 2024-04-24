@@ -1,7 +1,7 @@
 import { ILuckyJson } from "../common/interface/lucky-json";
 
-// Get json from https://dream-num.github.io/LuckysheetDemo/
-export const luckyJson: ILuckyJson = {
+// Get json from https://dream-num.github.io/LuckysheetDemo/, luckysheet.toJson(), note that the cell data is in sheet.celldata
+export const luckyJson: Partial<ILuckyJson> = {
     "container": "luckysheet",
     "lang": "en",
     "forceCalculation": false,

@@ -2,10 +2,12 @@ import { ILuckySheet } from "./lucky-sheet";
 import { IShowSheetBarConfig } from "./sheet-bar";
 import { IShowStatisticBarConfig } from "./statistic-bar";
 import { IShowToolbarConfig } from "./toolbar";
-import { ICellRightClickConfig } from "./cell-context-menu";
-import { ISheetRightClickConfig } from "./sheet-context-menu";
+import { ICellRightClickConfig } from "./cell-right-click";
+import { ISheetRightClickConfig } from "./sheet-right-click";
 import { IUserInfoObject, IUserMenuItem } from "./user-info";
 import { IPager } from "./pager";
+import { IFontList } from "./font-list";
+import { ILoading } from "./loading";
 
 // reference https://dream-num.github.io/LuckysheetDocs/guide/config.html
 export interface ILuckyJson {
@@ -26,12 +28,12 @@ export interface ILuckyJson {
     accuracy: number; // Accuracy
     allowCopy: boolean; // Allow copy
     showtoolbar: boolean; // Toolbar
-    showtoolbarConfig: IShowToolbarConfig; // Customize Toolbar
+    showtoolbarConfig: Partial<IShowToolbarConfig>; // Customize Toolbar
     showinfobar: boolean; // Information bar
     showsheetbar: boolean; // Bottom sheet bar
-    showsheetbarConfig: IShowSheetBarConfig; // Customize the bottom sheet bar
+    showsheetbarConfig: Partial<IShowSheetBarConfig>; // Customize the bottom sheet bar
     showstatisticBar: boolean; // The bottom count bar
-    showstatisticBarConfig: IShowStatisticBarConfig; // Customize the bottom count bar
+    showstatisticBarConfig: Partial<IShowStatisticBarConfig>; // Customize the bottom count bar
     enableAddRow: boolean; // Allow adding rows
     enableAddBackTop: boolean; // Allow back to top
     userInfo: string | boolean | IUserInfoObject; // User Info
@@ -42,7 +44,7 @@ export interface ILuckyJson {
     showConfigWindowResize: boolean; // Auto-indent interface
     forceCalculation: boolean; // Forced calculation
     cellRightClickConfig: Partial<ICellRightClickConfig>; // Custom cell right-click menu
-    sheetRightClickConfig: ISheetRightClickConfig; // Customize the right-click menu of the bottom sheet bar
+    sheetRightClickConfig: Partial<ISheetRightClickConfig>; // Customize the right-click menu of the bottom sheet bar
     rowHeaderWidth: number; // The width of the row header area
     columnHeaderHeight: number; // The height of the column header area
     sheetFormulaBar: boolean; // Show the formula bar
@@ -50,6 +52,9 @@ export interface ILuckyJson {
     limitSheetNameLength: boolean; // Limit the length of the worksheet name
     defaultSheetNameMaxLength: number; // Default maximum allowed sheet name length
     pager: IPager; // Pager
+    fontList: IFontList[]; // Font list
+    hook: object; // Hook
+    loading: ILoading; // Loading
 }
 
 

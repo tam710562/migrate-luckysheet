@@ -18,7 +18,11 @@
     "@univerjs/sheets": "^0.1.7",
     "@univerjs/sheets-formula": "^0.1.7",
     "@univerjs/sheets-ui": "^0.1.7",
-    "@univerjs/ui": "^0.1.7"
+    "@univerjs/ui": "^0.1.7",
+    "@univerjs/data-validation": "^0.1.7",
+    "@univerjs/sheets-data-validation": "^0.1.7",
+    "@univerjs/sheets-conditional-formatting": "^0.1.7",
+    "@univerjs/sheets-conditional-formatting-ui": "^0.1.7"
   },
   "devDependencies": {
     "typescript": "^5.4.3",

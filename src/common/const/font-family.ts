@@ -1,6 +1,4 @@
-import { LocaleType } from "@univerjs/core"
-
-export const fontFamilyMap: Record<string,string> = {
+export const fontFamilyMap: Record<string, string> = {
     '0': 'Times New Roman',
     '1': 'Arial',
     '2': 'Tahoma',
@@ -14,9 +12,4 @@ export const fontFamilyMap: Record<string,string> = {
     '10': 'STXinwei',
     '11': 'STXingkai',
     '12': 'STLiti'
-}
-
-export const localeMap: {[key:string]: LocaleType} = {
-    'zh': LocaleType.ZH_CN,
-    'en': LocaleType.EN_US,
 }

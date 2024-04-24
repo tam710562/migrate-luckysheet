@@ -5,7 +5,7 @@ import { IluckySheetAlternateFormatItem, IluckySheetAlternateFormatSave } from "
 import { IluckysheetCalcChain } from "./calc-chain";
 import { IluckySheetCelldata, IluckySheetCelldataValue } from "./cell-data";
 import { IluckySheetChart } from "./chart";
-import { IluckysheetConditionFormat } from "./conditional-formatting";
+import { IluckysheetConditionFormat } from "./condition-format";
 import { IluckysheetDataVerification } from "./data-verification";
 import { IluckySheetFilter } from "./filter";
 import { IluckysheetFrozen } from "./frozen";
@@ -66,7 +66,8 @@ export interface ILuckySheet {
     ch_width: number, //The width of a sheet
     rh_height: number, //The heighSt of a sheet
     load: string | number, //Check whether this sheed has been loaded
-    luckysheet_selection_range: any[],
+    luckysheet_selection_range: any[], // deprecated selection
+    jfgird_select_save: any[], // deprecated selection
     data: Array<Array<Partial<IluckySheetCelldataValue> | string | null>>, // Store and update the cell data
 }
 

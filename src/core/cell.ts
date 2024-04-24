@@ -1,11 +1,11 @@
 import { CellValueType, HorizontalAlign, ICellData, IStyleData, ITextRun, ITextStyle, IWorkbookData, IWorksheetData, Tools, VerticalAlign, WrapStrategy } from "@univerjs/core";
 import { ILuckySheet } from "../common/interface/lucky-sheet";
-import { fontFamilyMap } from "../common/const";
 import { ILuckyJson } from "../common/interface/lucky-json";
 import { ILuckyInlineStrItem } from "../common/interface/cell-style";
 import { IluckySheetCelldataValue } from "../common/interface/cell-data";
+import { fontFamilyMap } from "../common/const/font-family";
 
-export function cellData(workbookData: Partial<IWorkbookData>, worksheetData: Partial<IWorksheetData>, luckyJson: ILuckyJson, sheet: ILuckySheet) {
+export function cellData(workbookData: Partial<IWorkbookData>, worksheetData: Partial<IWorksheetData>, luckyJson: Partial<ILuckyJson>, sheet: Partial<ILuckySheet>) {
     // cell data
     if (sheet.celldata) {
         if (!worksheetData.cellData) {
@@ -47,6 +47,7 @@ export function covertCell(newCell: ICellData, cell:  Partial<IluckySheetCelldat
             return;
         }
 
+        let ed = 0;
         richTextList.forEach((inlineStrItem: ILuckyInlineStrItem) => {
 
             const textStyle: ITextStyle = {};
@@ -54,12 +55,13 @@ export function covertCell(newCell: ICellData, cell:  Partial<IluckySheetCelldat
 
             const content = String(inlineStrItem.v) || '';
             dataStream += content;
-            const sId = Tools.generateRandomId(6);
+
+            let st = ed;
+            ed = st + content.length;
 
             textRuns.push({
-                sId,
-                st: 0,
-                ed: content.length - 1,
+                st,
+                ed,
                 ts: textStyle,
             });
         });
@@ -85,6 +87,10 @@ export function covertCell(newCell: ICellData, cell:  Partial<IluckySheetCelldat
             newCell.v = cell.v;
         } else if (cell.m !== undefined) {
             newCell.v = cell.m;
+        }
+
+        if(cell.f !== undefined) {
+            newCell.f = cell.f;
         }
 
         const cellStyle: IStyleData = {};
@@ -197,14 +203,14 @@ export function covertCellStyle(cellStyle: IStyleData, cell: Partial<IluckySheet
 
             case '1':
                 cellStyle.tr = {
-                    a: 45,
+                    a: -45,
                     v: 0,
                 };
                 break;
 
             case '2':
                 cellStyle.tr = {
-                    a: -45,
+                    a: 45,
                     v: 0,
                 };
                 break;
@@ -218,14 +224,14 @@ export function covertCellStyle(cellStyle: IStyleData, cell: Partial<IluckySheet
 
             case '4':
                 cellStyle.tr = {
-                    a: 90,
+                    a: -90,
                     v: 0,
                 };
                 break;
 
             case '5':
                 cellStyle.tr = {
-                    a: -90,
+                    a: 90,
                     v: 0,
                 };
                 break;

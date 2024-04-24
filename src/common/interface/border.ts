@@ -10,14 +10,14 @@ export interface IluckySheetborderInfoCell {
 export interface IluckySheetborderInfoCellValue {
     row_index: number,
     col_index: number,
-    l?: IluckySheetborderInfoCellValueStyle,
-    r?: IluckySheetborderInfoCellValueStyle,
-    t?: IluckySheetborderInfoCellValueStyle,
-    b?: IluckySheetborderInfoCellValueStyle
+    l?: IluckySheetborderInfoCellValueStyle | null,
+    r?: IluckySheetborderInfoCellValueStyle | null,
+    t?: IluckySheetborderInfoCellValueStyle | null,
+    b?: IluckySheetborderInfoCellValueStyle | null,
 }
 export interface IluckySheetborderInfoCellValueStyle {
-    "style": number,
-    "color": string
+    style: string | number,
+    color: string
 }
 
 //border range interface

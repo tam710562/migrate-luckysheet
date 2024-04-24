@@ -6,7 +6,7 @@ export interface IluckysheetDataVerification {
 
 export interface IluckysheetDataVerificationValue {
     type: IluckysheetDataVerificationType;
-    type2: string | null;
+    type2: string | boolean | null;
     value1: string | number | null;
     value2: string | number | null;
     checked: boolean;

@@ -1,9 +1,9 @@
-import { BooleanNumber, IColumnData, IObjectArrayPrimitiveType, IRowData, IWorkbookData, IWorksheetData, Tools } from "@univerjs/core";
+import { IWorkbookData, IWorksheetData } from "@univerjs/core";
 import { ILuckyJson } from "../common/interface/lucky-json";
 import { ILuckySheet } from "../common/interface/lucky-sheet";
 import { border } from "./border";
 
-export function worksheetConfig(workbookData: Partial<IWorkbookData>,worksheetData: Partial<IWorksheetData>, luckyJson: ILuckyJson, sheet: ILuckySheet){
+export function worksheetConfig(workbookData: Partial<IWorkbookData>,worksheetData: Partial<IWorksheetData>, luckyJson: Partial<ILuckyJson>, sheet: Partial<ILuckySheet>){
     if (sheet.config) {
         // merge cell
         if (sheet.config.merge) {
@@ -54,23 +54,23 @@ export function worksheetConfig(workbookData: Partial<IWorkbookData>,worksheetDa
         if (sheet.config.rowhidden) {
             if (!worksheetData.rowData) worksheetData.rowData = {};
             let rowData = worksheetData.rowData;
-            for (const [rowIndex, isHidden] of Object.entries(sheet.config.rowhidden)) {
+            for (const [rowIndex, _] of Object.entries(sheet.config.rowhidden)) {
                 if (!rowData[Number(rowIndex)]) {
                     rowData[Number(rowIndex)] = {};
                 }
 
-                rowData[Number(rowIndex)].hd = isHidden;
+                rowData[Number(rowIndex)].hd = 1;
             }
         }
         // hidden column
         if (sheet.config.colhidden) {
             if (!worksheetData.columnData) worksheetData.columnData = {};
             let columnData = worksheetData.columnData;
-            for (const [colIndex, isHidden] of Object.entries(sheet.config.colhidden)) {
+            for (const [colIndex, _] of Object.entries(sheet.config.colhidden)) {
                 if (!columnData[Number(colIndex)]) {
                     columnData[Number(colIndex)] = {};
                 }
-                columnData[Number(colIndex)].hd = isHidden;
+                columnData[Number(colIndex)].hd = 1;
             }
         }
     }

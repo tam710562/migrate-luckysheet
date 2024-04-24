@@ -14,6 +14,10 @@ import { UniverSheetsPlugin } from "@univerjs/sheets";
 import { UniverSheetsFormulaPlugin } from "@univerjs/sheets-formula";
 import { UniverSheetsUIPlugin } from "@univerjs/sheets-ui";
 import { UniverUIPlugin } from "@univerjs/ui";
+import { UniverDataValidationPlugin } from '@univerjs/data-validation';
+import { UniverSheetsDataValidationPlugin } from '@univerjs/sheets-data-validation';
+import { UniverSheetsConditionalFormattingUIPlugin } from '@univerjs/sheets-conditional-formatting-ui';
+
 import { luckyJson } from "./data/demo-feature";
 import { luckyToUniver } from "./core/lucky-to-univer";
 
@@ -39,6 +43,21 @@ univer.registerPlugin(UniverSheetsPlugin);
 univer.registerPlugin(UniverSheetsUIPlugin);
 univer.registerPlugin(UniverSheetsFormulaPlugin);
 
+// data validation
+univer.registerPlugin(UniverDataValidationPlugin);
+univer.registerPlugin(UniverSheetsDataValidationPlugin);
+
+// sheet condition formatting
+univer.registerPlugin(UniverSheetsConditionalFormattingUIPlugin);
+
 // create univer sheet instance
 const univerData = luckyToUniver(luckyJson);
 univer.createUniverSheet(univerData);
+
+window.univer = univer;
+
+declare global {
+  interface Window {
+    univer?: Univer;
+  }
+}
