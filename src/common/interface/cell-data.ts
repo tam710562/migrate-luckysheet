@@ -27,8 +27,8 @@ export interface IluckySheetCelldataValue extends ILuckyInlineStrItem {
 
 export interface ILuckySheetCellFormat {
     fa: string //Format definition string
-    t: string // Cell Type
-    s?: ILuckyInlineStrItem[]
+    t?: string // Cell Type
+    s?: Partial<ILuckyInlineStrItem>[]
 }
 
 export interface IluckySheetCelldataValueMerge {

@@ -48,12 +48,12 @@ export function covertCell(newCell: ICellData, cell:  Partial<IluckySheetCelldat
         }
 
         let ed = 0;
-        richTextList.forEach((inlineStrItem: ILuckyInlineStrItem) => {
+        richTextList.forEach((inlineStrItem: Partial<ILuckyInlineStrItem>) => {
 
             const textStyle: ITextStyle = {};
             covertInlineStyle(textStyle, inlineStrItem);
 
-            const content = String(inlineStrItem.v) || '';
+            const content = replaceNewlines(String(inlineStrItem.v)) || '';
             dataStream += content;
 
             let st = ed;
@@ -258,4 +258,8 @@ export function covertCellStyle(cellStyle: IStyleData, cell: Partial<IluckySheet
                 break;
         }
     }
+}
+
+function replaceNewlines(input: string): string {
+    return input.replace(/\n/g, '\r');
 }

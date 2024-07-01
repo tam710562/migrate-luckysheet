@@ -21,7 +21,7 @@ export interface ILuckyJson {
     updateUrl: string; // Update address
     updateImageUrl: string; // Thumbnail update address
     data: Partial<ILuckySheet>[]; // Worksheet configuration
-    plugins: object[]; // Plugins
+    plugins: (object | string)[]; // Plugins
     column: number; // Number of columns 
     row: number; // Number of rows
     autoFormatw: boolean; // Billion format

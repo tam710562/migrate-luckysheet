@@ -1,10 +1,12 @@
 import "./style.css";
 import "@univerjs/design/lib/index.css";
 import "@univerjs/ui/lib/index.css";
+import "@univerjs/docs-ui/lib/index.css";
 import "@univerjs/sheets-ui/lib/index.css";
 import "@univerjs/sheets-formula/lib/index.css";
+import '@univerjs/sheets-data-validation/lib/index.css';
 
-import { Univer } from "@univerjs/core";
+import { LocaleType, Univer } from "@univerjs/core";
 import { defaultTheme } from "@univerjs/design";
 import { UniverDocsPlugin } from "@univerjs/docs";
 import { UniverDocsUIPlugin } from "@univerjs/docs-ui";
@@ -20,9 +22,12 @@ import { UniverSheetsConditionalFormattingUIPlugin } from '@univerjs/sheets-cond
 
 import { luckyJson } from "./data/demo-feature";
 import { luckyToUniver } from "./core/lucky-to-univer";
+import { locales } from "./locale";
 
 const univer = new Univer({
   theme: defaultTheme,
+  locale: LocaleType.EN_US,
+  locales
 });
 
 univer.registerPlugin(UniverRenderEnginePlugin);
@@ -52,6 +57,7 @@ univer.registerPlugin(UniverSheetsConditionalFormattingUIPlugin);
 
 // create univer sheet instance
 const univerData = luckyToUniver(luckyJson);
+
 univer.createUniverSheet(univerData);
 
 window.univer = univer;
