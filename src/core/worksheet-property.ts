@@ -6,7 +6,7 @@ import { dataVerification } from "./data-verification";
 export function worksheetProperty(workbookData: Partial<IWorkbookData>,worksheetData: Partial<IWorksheetData>, luckyJson: Partial<ILuckyJson>, sheet: Partial<ILuckySheet>){
     //  id
     if (sheet.index !== undefined) {
-        worksheetData.id = sheet.index;
+        worksheetData.id = `${sheet.index}`;
     } else {
         worksheetData.id = Tools.generateRandomId(6);
     }

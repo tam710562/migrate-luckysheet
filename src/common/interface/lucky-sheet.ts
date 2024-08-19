@@ -19,7 +19,7 @@ export interface ILuckySheet {
     name: string,// Sheet name, it will show on sheet bar, must be unique
     color: string,// Sheet color, it will show on sheet bar
     config: IluckySheetConfig | null, // Row height, column width, hidden, and so on
-    index: string, //A sheet uniquely identifies, 
+    index: string | number, //A sheet uniquely identifies, 
     status: string | number, //If 1 , it means current shown sheet, else means hidden
     order: string | number, //Order of sheet
     row: number,// Sheet the number of rows, contain blank cell
