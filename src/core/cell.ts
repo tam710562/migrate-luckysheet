@@ -76,30 +76,30 @@ export function covertCell(newCell: ICellData, cell:  Partial<IluckySheetCelldat
             },
             documentStyle: {},
         };
-    } else {
-        // content
-        if (cell.v !== undefined) {
-            let v = cell.v;
-            if (typeof v === 'boolean') {
-                v = v ? 1 : 0;
-                newCell.t = CellValueType.BOOLEAN
-            }
-            newCell.v = cell.v;
-        } else if (cell.m !== undefined) {
-            newCell.v = cell.m;
-        }
-
-        if(cell.f !== undefined) {
-            newCell.f = cell.f;
-        }
-
-        const cellStyle: IStyleData = {};
-
-        covertInlineStyle(cellStyle, cell);
-        covertCellStyle(cellStyle, cell);
-
-        newCell.s = Object.assign(newCell.s || {}, cellStyle);
     }
+    
+    // content
+    if (cell.v !== undefined) {
+        let v = cell.v;
+        if (typeof v === 'boolean') {
+            v = v ? 1 : 0;
+            newCell.t = CellValueType.BOOLEAN
+        }
+        newCell.v = cell.v;
+    } else if (cell.m !== undefined) {
+        newCell.v = cell.m;
+    }
+
+    if(cell.f !== undefined) {
+        newCell.f = cell.f;
+    }
+
+    const cellStyle: IStyleData = {};
+
+    covertInlineStyle(cellStyle, cell);
+    covertCellStyle(cellStyle, cell);
+
+    newCell.s = Object.assign(newCell.s || {}, cellStyle);
 }
 
 export function covertInlineStyle(textStyle: ITextStyle, inlineStrItem: Partial<ILuckyInlineStrItem>) {
@@ -149,14 +149,14 @@ export function covertInlineStyle(textStyle: ITextStyle, inlineStrItem: Partial<
 export function covertCellStyle(cellStyle: IStyleData, cell: Partial<IluckySheetCelldataValue>) {
     
     // background color
-    if (cell.bg) {
+    if (cell.bg !== undefined) {
         cellStyle.bg = {
             rgb: cell.bg,
         };
     }
 
     // vertical align
-    if (cell.vt) {
+    if (cell.vt !== undefined) {
         switch (String(cell.vt)) {
             case '0':
                 cellStyle.vt = VerticalAlign.MIDDLE;
@@ -174,7 +174,7 @@ export function covertCellStyle(cellStyle: IStyleData, cell: Partial<IluckySheet
     }
 
     // horizontal align
-    if (cell.ht) {
+    if (cell.ht !== undefined) {
         switch (String(cell.ht)) {
             case '0':
                 cellStyle.ht = HorizontalAlign.CENTER;
@@ -192,7 +192,7 @@ export function covertCellStyle(cellStyle: IStyleData, cell: Partial<IluckySheet
     }
 
     // vertical text
-    if (cell.tr) {
+    if (cell.tr !== undefined) {
         switch (cell.tr) {
             case '0':
                 cellStyle.tr = {
@@ -242,7 +242,7 @@ export function covertCellStyle(cellStyle: IStyleData, cell: Partial<IluckySheet
     }
 
     // text wrap
-    if (cell.tb) {
+    if (cell.tb !== undefined) {
         switch (String(cell.tb)) {
             case '0':
                 cellStyle.tb = WrapStrategy.CLIP;
