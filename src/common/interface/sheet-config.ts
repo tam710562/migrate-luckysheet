@@ -1,29 +1,29 @@
-import { IluckySheetAuthority } from "./authority"
-import { IluckySheetborderInfo } from "./border"
-import { IluckySheetConfigMerges } from "./merge-cell"
+import { IluckySheetAuthority } from './authority';
+import { IluckySheetborderInfo } from './border';
+import { IluckySheetConfigMerges } from './merge-cell';
 
 //Lucky sheet config attribute
 export interface IluckySheetConfig {
-    merge?: IluckySheetConfigMerges, //merge handdler
-    // _borderInfo?: IMapluckySheetborderInfoCellForImp, //range border
-    borderInfo?: IluckySheetborderInfo[],//range border
-    rowlen?: IluckySheetRowAndColumnLen, // every row's height
-    columnlen?: IluckySheetRowAndColumnLen,// every column's width
-    rowhidden?: IluckySheetRowAndColumnHidden,//setting be hidden rows
-    colhidden?: IluckySheetRowAndColumnHidden,//setting be hidden columns
+  merge?: IluckySheetConfigMerges; //merge handdler
+  // _borderInfo?: IMapluckySheetborderInfoCellForImp, //range border
+  borderInfo?: IluckySheetborderInfo[]; //range border
+  rowlen?: IluckySheetRowAndColumnLen; // every row's height
+  columnlen?: IluckySheetRowAndColumnLen; // every column's width
+  rowhidden?: IluckySheetRowAndColumnHidden; //setting be hidden rows
+  colhidden?: IluckySheetRowAndColumnHidden; //setting be hidden columns
 
-    customHeight?: IluckySheetRowAndColumnHidden,//user operate row height
-    customWidth?: IluckySheetRowAndColumnHidden//user operate column width
+  customHeight?: IluckySheetRowAndColumnHidden; //user operate row height
+  customWidth?: IluckySheetRowAndColumnHidden; //user operate column width
 
-    authority?: IluckySheetAuthority,// Worksheet protection
+  authority?: IluckySheetAuthority; // Worksheet protection
 }
 
 //row length and column length interface
 export interface IluckySheetRowAndColumnLen {
-    [index: string]: number
+  [index: string]: number;
 }
 
 //row and column hidden interface
 export interface IluckySheetRowAndColumnHidden {
-    [index: string]: number
+  [index: string]: number;
 }

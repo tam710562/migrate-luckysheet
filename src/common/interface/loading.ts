@@ -1,4 +1,4 @@
 export interface ILoading {
-    image?: () => string,
-    imageClass: string
+  image?: () => string;
+  imageClass: string;
 }

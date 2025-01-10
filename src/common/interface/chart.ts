@@ -1,5 +1,1 @@
-
-export interface IluckySheetChart {
-
-}
-
+export interface IluckySheetChart {}

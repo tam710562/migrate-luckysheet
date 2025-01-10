@@ -1,33 +1,32 @@
-import "./style.css";
-import "@univerjs/design/lib/index.css";
-import "@univerjs/ui/lib/index.css";
-import "@univerjs/docs-ui/lib/index.css";
-import "@univerjs/sheets-ui/lib/index.css";
-import "@univerjs/sheets-formula/lib/index.css";
-import '@univerjs/sheets-data-validation/lib/index.css';
-
-import { LocaleType, Univer } from "@univerjs/core";
-import { defaultTheme } from "@univerjs/design";
-import { UniverDocsPlugin } from "@univerjs/docs";
-import { UniverDocsUIPlugin } from "@univerjs/docs-ui";
-import { UniverFormulaEnginePlugin } from "@univerjs/engine-formula";
-import { UniverRenderEnginePlugin } from "@univerjs/engine-render";
-import { UniverSheetsPlugin } from "@univerjs/sheets";
-import { UniverSheetsFormulaPlugin } from "@univerjs/sheets-formula";
-import { UniverSheetsUIPlugin } from "@univerjs/sheets-ui";
-import { UniverUIPlugin } from "@univerjs/ui";
+import { LocaleType, Univer, UniverInstanceType } from '@univerjs/core';
 import { UniverDataValidationPlugin } from '@univerjs/data-validation';
-import { UniverSheetsDataValidationPlugin } from '@univerjs/sheets-data-validation';
+import { defaultTheme } from '@univerjs/design';
+import '@univerjs/design/lib/index.css';
+import { UniverDocsPlugin } from '@univerjs/docs';
+import { UniverDocsUIPlugin } from '@univerjs/docs-ui';
+import '@univerjs/docs-ui/lib/index.css';
+import { UniverFormulaEnginePlugin } from '@univerjs/engine-formula';
+import { UniverRenderEnginePlugin } from '@univerjs/engine-render';
+import { UniverSheetsPlugin } from '@univerjs/sheets';
 import { UniverSheetsConditionalFormattingUIPlugin } from '@univerjs/sheets-conditional-formatting-ui';
+import { UniverSheetsDataValidationPlugin } from '@univerjs/sheets-data-validation';
+import '@univerjs/sheets-data-validation/lib/index.css';
+import { UniverSheetsFormulaPlugin } from '@univerjs/sheets-formula';
+import '@univerjs/sheets-formula/lib/index.css';
+import { UniverSheetsUIPlugin } from '@univerjs/sheets-ui';
+import '@univerjs/sheets-ui/lib/index.css';
+import { UniverUIPlugin } from '@univerjs/ui';
+import '@univerjs/ui/lib/index.css';
 
-import { luckyJson } from "./data/demo-feature";
-import { luckyToUniver } from "./core/lucky-to-univer";
-import { locales } from "./locale";
+import { luckyToUniver } from './core/lucky-to-univer';
+import { luckyJson } from './data/demo-feature';
+import { locales } from './locale';
+import './style.css';
 
 const univer = new Univer({
   theme: defaultTheme,
   locale: LocaleType.EN_US,
-  locales
+  locales,
 });
 
 univer.registerPlugin(UniverRenderEnginePlugin);
@@ -58,7 +57,7 @@ univer.registerPlugin(UniverSheetsConditionalFormattingUIPlugin);
 // create univer sheet instance
 const univerData = luckyToUniver(luckyJson);
 
-univer.createUniverSheet(univerData);
+univer.createUnit(UniverInstanceType.UNIVER_SHEET, univerData);
 
 window.univer = univer;
 

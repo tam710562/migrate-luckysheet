@@ -1,4 +1,4 @@
 export interface IFontList {
-    fontName: string,
-    url: string
+  fontName: string;
+  url: string;
 }
